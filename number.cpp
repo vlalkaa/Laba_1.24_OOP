@@ -1,6 +1,4 @@
 #include "number.h"
-#include <cmath>
-using namespace std;
 
     number::number(string str,int strsys1,int strsys2)
     {
