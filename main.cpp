@@ -1,22 +1,21 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include "number.h"
 using namespace std;
-
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    string str;
-    int strsys1, strsys2;
+    string num;
+    int InitialNumSystem, FinalNumSystem;
     cout << "Число: ";
-    cin >> str;
+    cin >> num;
     cout << "Начальная система счисления: ";
-    cin >> strsys1;
+    cin >> InitialNumSystem;
     cout << "Конечная система счисления: ";
-    cin >> strsys2;
-    number numA(str,strsys1,strsys2);
-    int num10 = numA.DecimalNotation(strsys1, str);
-    cout << "Число в " << strsys2 << " системе счисления: " << numA.FiniteNumberSystem(num10, strsys2);
+    cin >> FinalNumSystem;
+    number numA(num,InitialNumSystem,FinalNumSystem);
+    cout << "Число в " << FinalNumSystem << " системе счисления: " << numA.FiniteNumberSystem();
     return 0;
 }

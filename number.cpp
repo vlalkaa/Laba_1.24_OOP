@@ -1,14 +1,14 @@
 #include "number.h"
 
-    number::number(string str,int strsys1,int strsys2)
+    number::number(string num,int InitialNumSystem,int FinalNumSystem)
     {
-        num = str;
-        numsys1 = strsys1;
-        numsys2 = strsys2;
-
+        this->num = num;
+        this->InitialNumSystem = InitialNumSystem;
+        this->FinalNumSystem = FinalNumSystem;
+        num10 = DecimalNotation();
     }
 
-    int number::DecimalNotation(int numsys1, string num) // Перевод в десятичную сислему счисления
+    int number::DecimalNotation() // Перевод в десятичную сислему счисления
     {
         int sum = 0;
         int p = num.length() - 1;// степень
@@ -67,20 +67,20 @@
                 k = 0;
                 break;
             }
-            sum = sum + k * pow(numsys1, p);
+            sum = sum + k * pow(InitialNumSystem, p);
             p--;
         }
         return sum;
     }
 
-    string number::FiniteNumberSystem(int num10, int numsys2) // Перевод в конечную систему счисления
+    string number::FiniteNumberSystem() // Перевод в конечную систему счисления
     {
         string sum;
         sum.clear();
         while (num10 != 0)
         {
             string k;
-            switch (num10 % numsys2)
+            switch (num10 % FinalNumSystem)
             {
             case 15:
                 k = 'F';
@@ -132,7 +132,7 @@
                 break;
             }
             sum = sum + k;
-            num10 = num10 / numsys2;
+            num10 = num10 / FinalNumSystem;
         }
         for (int i = 0, j = sum.length() - 1; i < j; i++, j--)
         {
